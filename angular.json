@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "QuickKart-FrontEnd"
+  "defaultProject": "QuickKart-FrontEnd",
+  "cli": {
+    "analytics": false
+  }
 }
