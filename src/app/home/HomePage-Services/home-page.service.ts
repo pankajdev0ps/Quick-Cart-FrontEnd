@@ -17,7 +17,7 @@ export class HomePageService {
 
   //Getting the Products from backend API
   getProducts():Observable<IProduct[]>{
-    let tempVar = this.http.get<IProduct[]>('https://localhost:5001/api/home/getproducts')
+    let tempVar = this.http.get<IProduct[]>('https://qk-prod.azurewebsites.net/api/home/getproducts')
     console.log(tempVar)
     return tempVar
   }
@@ -62,7 +62,7 @@ export class HomePageService {
     formData.append('productPrice', product.Price)
     formData.append('productQuantity', product.Quantity)
     console.log(formData)
-    let result=this.http.post<Response>('https://localhost:5001/api/admin/upload',formData).pipe(catchError(this.errorHandler))
+    let result=this.http.post<Response>('https://qk-prod.azurewebsites.net/api/admin/upload',formData).pipe(catchError(this.errorHandler))
     console.log(result)
     return result
   }
