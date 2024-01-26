@@ -48,7 +48,7 @@ export class HomePageService {
     user={emailID:userEmailID, password:userPassword,usertype:type};
     console.log(user)
 
-    let result=this.http.post<number>('http://localhost:7071/api/LoginFunction',user)
+    let result=this.http.post<number>('https://loginfunctionapp34x.azurewebsites.net/api/LoginFunction?code=Cmi2jBApoHkJFxVi8dFjc7GMAQPGxq7ENS466d-iWrD4AzFuthSZ5A==',user)
     console.log(result)
     return result
 
