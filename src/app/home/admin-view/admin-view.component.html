@@ -132,8 +132,8 @@
   
                     <input  type="file" #imageInput class="form-control" name="img" 
                           
-                           accept="image/*" (change)="processFile(imageInput)"
-                            >
+                           accept="image/*" (change)="onFileChange($event)">
+                           
                 </div><br>
                 <div *ngIf="selectedFile" class="img-preview-container">
 
