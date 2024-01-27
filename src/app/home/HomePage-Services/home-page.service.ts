@@ -17,18 +17,18 @@ export class HomePageService {
 
   //Getting the Products from backend API
   getProducts():Observable<IProduct[]>{
-    let tempVar = this.http.get<IProduct[]>('https://qk-prod.azurewebsites.net/api/home/getproducts')
+    let tempVar = this.http.get<IProduct[]>('https://localhost:5001/api/home/getproducts')
     console.log(tempVar)
     return tempVar
   }
 
-  MakePayment(CardNumber1:string,cvv1:string,ex:string,pid:number,cost:number):Observable<boolean>{
+  MakePayment(CardNumber1:string,cvv1:string,ex:string,pid:number,cost:number,custEmail:string):Observable<boolean>{
 
     var pay:Payment
-    pay={cardNumber:CardNumber1,CVV:cvv1,Expiry:ex,ProdCost:cost,ProdID:pid}
+    pay={cardNumber:CardNumber1,CVV:cvv1,Expiry:ex,ProdCost:cost,ProdID:pid,CustEmail:custEmail}
     console.log(pay)
 
-    let tempVar = this.http.post<boolean>('http://localhost:7181/api/PaymentFunction',pay)
+    let tempVar = this.http.post<boolean>('http://localhost:7072/api/PaymentService',pay)
     return tempVar
   }
 
@@ -48,7 +48,7 @@ export class HomePageService {
     user={emailID:userEmailID, password:userPassword,usertype:type};
     console.log(user)
 
-    let result=this.http.post<number>('https://loginfunctionapp34x.azurewebsites.net/api/LoginFunction?code=Cmi2jBApoHkJFxVi8dFjc7GMAQPGxq7ENS466d-iWrD4AzFuthSZ5A==',user)
+    let result=this.http.post<number>('http://localhost:7071/api/LoginFunction',user)
     console.log(result)
     return result
 
@@ -62,7 +62,7 @@ export class HomePageService {
     formData.append('productPrice', product.Price)
     formData.append('productQuantity', product.Quantity)
     console.log(formData)
-    let result=this.http.post<Response>('https://qk-prod.azurewebsites.net/api/admin/upload',formData).pipe(catchError(this.errorHandler))
+    let result=this.http.post<Response>('https://localhost:5001/api/admin/upload',formData).pipe(catchError(this.errorHandler))
     console.log(result)
     return result
   }
@@ -89,5 +89,6 @@ export class Payment{
   Expiry:string='';
   ProdCost:number=0;
   ProdID:number=0;
+  CustEmail:string=''
 
 }

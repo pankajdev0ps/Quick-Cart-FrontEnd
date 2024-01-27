@@ -104,6 +104,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   Buy(p: IProduct) {
+    if(sessionStorage.getItem('userEmailID') == null) {
+      this.showNotification("error", "User not Logged In");
+      return;
+    }
     this.router.navigate([
       '/payment',
       p.productID,
@@ -112,6 +116,10 @@ export class LandingPageComponent implements OnInit {
     ]);
   }
   //this method will run when the add membership will be clicked
+
+  public showNotification(type: string, message: string): void {
+    this.notifier.notify(type, message);
+  }
 }
 
 type LoggedInUser = '' | null | string;

@@ -87,7 +87,7 @@ export class AdminViewComponent implements OnInit {
   notifier: NotifierService;
 
   Logout() {
-    console.log('reached');
+    console.log('Admin View: Logout reached');
     sessionStorage.clear();
     this.router.navigate(['/home']);
   }
@@ -107,12 +107,13 @@ export class AdminViewComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.notifier = notifier;
-    console.log(sessionStorage.getItem('emailID'));
-    var a = sessionStorage.getItem('emailID');
+    
+    console.log('Admin View: ' + sessionStorage.getItem('userEmailID'));
+    var a = sessionStorage.getItem('userEmailID');
 
     if (a == null) {
-      console.log(a);
-      this.router.navigate(['/studentLogin']);
+      console.log('Admin View: ' + a);
+      this.router.navigate(['/home']);
     }
     // this.userEmailID = this.active_route.snapshot.params['emailID']
     // console.log(this.userEmailID);
