@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'common', component: CommonLayoutComponent },
   { path: 'adminView', component: AdminViewComponent },
   { path: 'payment/:id/:price/:name', component: PaymentComponent },
-
   { path: '*', component: LandingPageComponent },
   { path: '', component: LandingPageComponent }
 
