@@ -16,14 +16,15 @@ export class HomePageService {
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders().set(
       'Ocp-Apim-Subscription-Key',
-      '805c07a66137404e9a11df67bac3887e'
+      '####'
     );
   }
 
   //Getting the Products from backend API
   getProducts(): Observable<IProduct[]> {
+    let url = 'https://localhost:5001'
     let tempVar = this.http.get<IProduct[]>(
-      'https://qkapim34x.azure-api.net/product/api/home/getproducts',
+      url + '/api/home/getproducts',
       { headers: this.headers }
     );
     console.log(tempVar);
@@ -48,9 +49,9 @@ export class HomePageService {
       CustEmail: custEmail,
     };
     console.log(pay);
-
+    let url = 'https://localhost:7072'
     let tempVar = this.http.post<boolean>(
-      'https://qkapim34x.azure-api.net/api/PaymentService',
+      url + '/api/PaymentService',
       pay,
       { headers: this.headers }
     );
@@ -59,10 +60,9 @@ export class HomePageService {
 
   PostNewSubscriber(emailID: string): Observable<boolean> {
     console.log(emailID);
-
+    let url = 'https://localhost:5001'
     let tempVar = this.http.get<boolean>(
-      'https://quickcart-microservice.azurewebsites.net/api/SubscribeFunction?code=pIOIb80woJnaC8N77yQl1nSLxlDAvSa5mw9rli414zaoAzFuF3cBhA==&emailID=' +
-        emailID
+      url + '/api/SubscribeFunction'
     );
     console.log(tempVar);
     return tempVar;
@@ -76,12 +76,9 @@ export class HomePageService {
     var user: User;
     user = { emailID: userEmailID, password: userPassword, usertype: type };
     console.log(user);
-    const httpHeaders = new HttpHeaders().set(
-      'Ocp-Apim-Subscription-Key',
-      '805c07a66137404e9a11df67bac3887e'
-    );
+    let url = 'https://localhost:7071'
     let result = this.http.post<number>(
-      'https://qkapim34x.azure-api.net/api/LoginFunction',
+      url + '/api/LoginFunction',
       user,
       { headers: this.headers }
     );
@@ -97,9 +94,10 @@ export class HomePageService {
     formData.append('productPrice', product.Price);
     formData.append('productQuantity', product.Quantity);
     console.log(formData);
+    let url = 'https://localhost:5001'
     let result = this.http
       .post<Response>(
-        'https://qkapim34x.azure-api.net/product/api/admin/upload',
+        url += '/api/admin/upload',
         formData,
         { headers: this.headers }
       )

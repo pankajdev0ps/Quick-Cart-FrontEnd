@@ -11,16 +11,16 @@ import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 export class AppComponent {
   title = 'QuickKart-FrontEnd';
   constructor(private router: Router) {
-    var angularPlugin = new AngularPlugin();
-    const appInsights = new ApplicationInsights({
-      config: {
-        instrumentationKey: '7a3974c6-2311-4631-a01e-ba7080edf470',
-        extensions: [angularPlugin],
-        extensionConfig: {
-          [angularPlugin.identifier]: { router: this.router },
-        },
-      },
-    });
-    appInsights.loadAppInsights();
+    // var angularPlugin = new AngularPlugin();
+    // const appInsights = new ApplicationInsights({
+    //   config: {
+    //     instrumentationKey: '7a3974c6-2311-4631-a01e-ba7080edf470',
+    //     extensions: [angularPlugin],
+    //     extensionConfig: {
+    //       [angularPlugin.identifier]: { router: this.router },
+    //     },
+    //   },
+    // });
+    // appInsights.loadAppInsights();
   }
 }
