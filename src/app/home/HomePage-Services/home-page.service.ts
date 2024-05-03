@@ -22,7 +22,7 @@ export class HomePageService {
 
   //Getting the Products from backend API
   getProducts(): Observable<IProduct[]> {
-    let url = 'https://backendqk.azurewebsites.net/'
+    let url = 'https://quickkart-webservice20240503122639.azurewebsites.net/'
     let tempVar = this.http.get<IProduct[]>(
       url + '/api/home/getproducts',
       { headers: this.headers }
